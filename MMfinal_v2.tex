@@ -4,13 +4,13 @@
 \usepackage{amsmath}
 \usepackage{multirow}
 \usepackage[pdftex]{graphicx}
-\graphicspath{ {./imagenes_fin/} }
 \usepackage{anysize}
 \usepackage{xcolor}
 \usepackage{multicol}
 \usepackage{hyperref}
+\usepackage{float}
 
-\marginsize{2cm}{2cm}{2cm}{2cm}
+\marginsize{1.5cm}{1.5cm}{1.5cm}{1.5cm}
 
 \begin{document}
 
@@ -72,7 +72,7 @@ The independent variables collected were: autonomous community of hospital, age,
 care visits in the last year ($<3/\geq3$), mortality during 30 days after hospitalisation, stay days, FINE scale (I–III, IV–V), type of microorganism isolated, comorbidities (diabetes without complications, obesity, renal failure without haemodialysis, congestive
 heart disease, disabling neurological disease, seizure disorders and other pulmonary diseases), administration of seasonal influenza and 23-valent pneumococcal polysaccharide vaccines.
 
-Dependent variables were conforming of antibiotic treatment defined according to the regimen administered and according to compliance with the SEPAR \cite{menendez2010neumonia} norm that differentiates patient treatment according to intensive care unit (ICU) admission or not ICU (Table 1) and on the days of hospital stay. In addition, CPGs differentiate treatment according to suspected pneumonia due to P. aeruginosa, and therefore cases with empirical treatment against this microorganism were specifically analysed. Conforming treatment was defined using two variables: the correctness of antibiotic treatment and compliance with the conforming of treatment and treatment duration according to SEPAR guidelines.
+Dependent variables were conforming of antibiotic treatment defined according to the regimen administered and according to compliance with the SEPAR \cite{menendez2010neumonia} norm that differentiates patient treatment according to intensive care unit (ICU) admission or not ICU (table~\ref{tab:tabla_tto}) and on the days of hospital stay. In addition, CPGs differentiate treatment according to suspected pneumonia due to P. aeruginosa, and therefore cases with empirical treatment against this microorganism were specifically analysed. Conforming treatment was defined using two variables: the correctness of antibiotic treatment and compliance with the conforming of treatment and treatment duration according to SEPAR guidelines.
 
 \subsection*{\textcolor{blue}{Statistical analysis}}
 Descriptive statistics were described using means and standard deviation (S.D.). The bivariate analysis was applied to qualitative variables in the comparison between patients with and without conforming of antibiotic treatment using the $\chi^{2}$ test, the odds ratio (OR) and 95\% confidence intervals (CI). To control the effect of possible variations in patient care between autonomous communities, a forward generalised linear model was used, taking the patient as the first level and the autonomous community as the second level. Two modelswere applied, one with the random effect of the autonomous communities and another including patient variables (fixed effects). The analysis was made using IBM SPSS 19.0 and R
@@ -80,25 +80,247 @@ software. A value of $p< 0.05$ was considered statistically significant.
 
 \subsection*{\textcolor{blue}{Ethical considerations}}
 The study was approved by the ethics committees of the participating hospitals and the confidentiality of patient information was preserved through the use of identification codes.
+\end{multicols}
+
+\begin{figure}[hbt!]
+\begin{center}
+\includegraphics[scale=.7]{algoritmo_casos.jpg}
+\caption{\footnotesize Algorithm of the classification of hospitalised cases of pneumonia and percentage of adequacy of antibiotic treatment (at the foot of the figure).}
+\label{fig:algoritmo}
+\end{center}
+\end{figure}
+
+\begin{table}[hbt!]
+\centering
+\scalebox{0.68}
+{
+\begin{tabular}{lllllll}
+\cline{1-5}
+\multirow{2}{*}{}
+& \multicolumn{2}{c}{No ICU admission}                                                    & \multicolumn{2}{c}{ICU admission}
+&  &  \\ \cline{2-5}
+& \multicolumn{1}{c}{Treatment}
+& Duration
+& \multicolumn{1}{c}{Treatment}
+& Duration
+&  &  \\ \cline{1-5}
+\multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Conforming treatment\\ without suspicion of\\ pseudomonas\end{tabular}}
+& \begin{tabular}[c]{@{}l@{}}Levofloxacin only\\ or moxifloxacin only\end{tabular}
+& 7-10 days
+& \begin{tabular}[c]{@{}l@{}}Cefotaxime, ceftriaxone or\\ ampilicil-sulbactan+macrolide\end{tabular}
+& 7-14 days both treatments
+&  &  \\ \cline{2-5}
+& \begin{tabular}[c]{@{}l@{}}Third-generation cephalosporins or\\ amoxicillin-clavulanic+macrolide\end{tabular}
+& \begin{tabular}[c]{@{}l@{}}7-10 days for\\ both treatments\end{tabular}
+& \begin{tabular}[c]{@{}l@{}}Cefotaxime, ceftriaxone or\\ ampicillin-sulbactam +\\ levofloxacin\end{tabular}
+& 7-14 days both treatments
+&  &  \\ \cline{1-5}
+\begin{tabular}[c]{@{}l@{}}Conforming treatment\\ with suspicion of\\ pseudomonas\end{tabular}
+& \begin{tabular}[c]{@{}l@{}}Piperacillin-tazobactam or cefepime or\\ cabapenem+ciprofloxacin or\\ levofloxacin or\\ aminoglycoside\end{tabular}
+& 14 days
+& Same regimen
+&  &  &  \\ \cline{1-5}
+Unconforming treatment
+& \begin{tabular}[c]{@{}l@{}}Levofloxacin or moxifloxacin+\\ third-generation cephalosporins\\ Anoxicilin+clavulanic only\\ Other combinations not contemplated\end{tabular}
+& & \begin{tabular}[c]{@{}l@{}}Levofloxacin only\\ Third-ganeration cephalosporin only\\ Amoxicilin-clavulanic only\\ Other combinations not conempleted\end{tabular}
+& &  &  \\ \cline{1-5}
+\end{tabular}
+}
+\caption{\footnotesize Classification of conforming/unconforming antibiotic treatment in patients with community-acquired pneumonia, according to the antibiotics received,
+intensive care unit admission and duration of antibiotic treatment}
+\label{tab:tabla_tto}
+\end{table}
+
+\begin{multicols}{2}
 
 \section*{\textcolor{blue}{Results}}
-A total of 1929 cases of CAP were collected, of which 12 were excluded because the ICU admission status was unknown and 60 because there was no antibiotic treatment. Therefore, 1857 patients were finally analysed, of whom 1775 were hospitalised on the ward and 82 required ICU admission (Fig. 1). The mean age was $78.6 \pm 7.4$ years, and 39\% were female. Monotherapy with $\beta$-lactams was administered in 3\% of patients, moxifloxacin in 1.8\% and levofloxacin in 26.6\% of the total.
+A total of 1929 cases of CAP were collected, of which 12 were excluded because the ICU admission status was unknown and 60 because there was no antibiotic treatment. Therefore, 1857 patients were finally analysed, of whom 1775 were hospitalised on the ward and 82 required ICU admission (figure~\ref{fig:algoritmo}). The mean age was $78.6 \pm 7.4$ years, and 39\% were female. Monotherapy with $\beta$-lactams was administered in 3\% of patients, moxifloxacin in 1.8\% and levofloxacin in 26.6\% of the total.
 
-Conforming of antibiotic treatment without taking into account treatment duration was 51.4\% (95\% CI 49.1–53.8) in patients without ICU admission. The variables associated with
-conforming treatment were COPD (OR 1.24, 95\% CI 1.01–1.52) and absence of renal failure (OR 1.66, 95\% CI 1.30–2.13), congestive heart disease (OR 1.71, 95\% CI 1.39–2.12), haemoglobinopathy or anaemia (OR 1.50, 95\% CI 1.16–1.92), cognitive dysfunction (OR 1.69, 95\% CI 1.27–2.26) and seizure disorders (OR 2.26, 95\% CI 1.06–4.81) (Table 2). The mean stay was significantly shorter in patients with conforming treatment ($8.89 \pm 8.18$
-vs. $11.54 \pm 10.41$, $p < 0.001$), and mortality after 30 days of hospitalisation
-was worse in patients with uncompliant treatment (OR 1.48, 95\% CI 1.03–2.14). No differences in conforming treatment were found according to the FINE score. Conforming of antibiotic treatment differed according to autonomous community ($p < 0.001$, Fig. 2). The most frequent unconforming treatments in monotherapy (395 patients) were $\beta$-lactamics (96.5\%), and in combination therapy were $\beta$-lactamic + fluoroquinolone with 83.3\%. In both therapies, autonomous communities ranged between 1\% and 42\% of unconforming.
+\begin{figure}[H]
+\includegraphics[scale=.60]{adecuacion_ccaa.jpg}
+\caption{\footnotesize Percentage of conforming treatment with 95\% confidence interval in hospitalised patients according to autonomous community of residence of the patient.}
+\label{fig:ccaa}
+\end{figure}
 
-Of the 82 cases requiring ICU admission, pseudomonas infection was suspected in 13 (15.9\%), according to the type of treatment administered. Treatment compliance with SEPAR guidelines was 58\% in patients without suspicion of P. aeruginosa and 38\% in those with suspicion of pseudomonas infection. Conforming treatment was more frequent in cases collected in the 2013–14 season than those collected in the 2014–15 season (OR 2.60, 95\% CI 1.05–6.44); patients admitted to the ICU with $<3$ hospital visits in the last year had better treatment compliance than those with $\geq3$ hospital visits (OR 3.04, 95\% CI 1.23–7.52) (Table 3).
+Conforming of antibiotic treatment without taking into account treatment duration was 51.4\% (95\% CI 49.1–53.8) in patients without ICU admission. The variables associated with conforming treatment were COPD (OR 1.24, 95\% CI 1.01–1.52) and absence of renal failure (OR 1.66, 95\% CI 1.30–2.13), congestive heart disease (OR 1.71, 95\% CI 1.39–2.12), haemoglobinopathy or anaemia (OR 1.50, 95\% CI 1.16–1.92), cognitive dysfunction (OR 1.69, 95\% CI 1.27–2.26) and seizure disorders (OR 2.26, 95\% CI 1.06–4.81) (table~\ref{tab:tabla_nouci}). The mean stay was significantly shorter in patients with conforming treatment ($8.89 \pm 8.18$ vs. $11.54 \pm 10.41$, $p < 0.001$), and mortality after 30 days of hospitalisation was worse in patients with uncompliant treatment (OR 1.48, 95\% CI 1.03–2.14). No differences in conforming treatment were found according to the FINE score. Conforming of antibiotic treatment differed according to autonomous community ($p < 0.001$, figure~\ref{fig:ccaa}). The most frequent unconforming treatments in monotherapy (395 patients) were $\beta$-lactamics (96.5\%), and in combination therapy were $\beta$-lactamic + fluoroquinolone with 83.3\%. In both therapies, autonomous communities ranged between 1\% and 42\% of unconforming.
+
+\end{multicols}
+
+\begin{table}[hbt!]
+\centering
+\scalebox{0.85}
+{
+\begin{tabular}{lcccc}
+\hline
+& Conforming treatment & Unconforming treatment & & \\
+Variables & ($n=913$) & ($n=862$) & Crude OR & $p$ value \\
+\hline
+Overall
+& 51.4\%
+& 48.6\%
+& & \\
+Barthel index ($\geq40$) 
+& 826 (90.5\%)
+& 758 (87.9\%) 
+& 1.30 (0.96-1.76)
+& 0.09 \\
+COPD (yes)
+& 299 (32.7\%)
+& 243 (28.2\%) 
+& 1.24 (1.01-1.52)
+& 0.037 \\
+Renal failure (no)
+& 782 (85.7\%)
+& 674 (78.2\%)
+& 1.66 (1.30-2.13)
+& $<0.001$ \\
+Disabling neurological disease (no) 
+& 842 (92.2\%)
+& 781 (90.6\%)
+& 1.71 (1.39-2.12)
+& $<0.001$ \\
+Haemoglobinopaty or anaemia (no)
+& 791 (86.6\%) 
+& 700 (81.2\%)
+& 1.50 (1.16-1.92)
+& 0.002 \\
+Cognitive dysfunction (no)
+& 827 (90.6\%)
+& 733 (85.0\%)
+& 1.69 (1.27-2.26)
+& $<0.001$ \\
+Siezure disorders (no)
+& 903 (98.9\%)
+& 841 (97.6\%)
+& 2.26 (1.06-4.81)
+& 0.031\\
+\hline
+\end{tabular}
+}
+\caption{\footnotesize Significative variables in patients not admitted to the ICU according to conforming of antibiotic treatment}
+\label{tab:tabla_nouci}
+\end{table}
+
+\begin{multicols}{2}
+
+Of the 82 cases requiring ICU admission, pseudomonas infection was suspected in 13 (15.9\%), according to the type of treatment administered. Treatment compliance with SEPAR guidelines was 58\% in patients without suspicion of P. aeruginosa and 38\% in those with suspicion of pseudomonas infection. Conforming treatment was more frequent in cases collected in the 2013–14 season than those collected in the 2014–15 season (OR 2.60, 95\% CI 1.05–6.44); patients admitted to the ICU with $<3$ hospital visits in the last year had better treatment compliance than those with $\geq3$ hospital visits (OR 3.04, 95\% CI 1.23–7.52) (table~\ref{tab:tabla_uci}).
 
 The multilevel analysis showed similar results between the two models (Table 4). In patients without ICU admission, the variables significantly associated with conforming treatment, taking into account the effect of autonomous communities, were renal failure without haemodialysis (OR 1.49, 95\% CI 1.15–1.95) and cognitive dysfunction (OR 1.71, 95\% CI 1.25–2.35), with a significant trend to significance for COPD (OR 1.23, 95\% CI 0.99–1.54). In patients admitted to the ICU, the variables associated with conforming treatment were $<3$ hospital visits in the last year (OR 2.70, 95\% CI 1.03–7.12), also adjusted by autonomous community. The intraclass correlation coefficient was 22\% for patients without ICU admission and 5\% for those admitted to the ICU.
 
 When considering the treatments administered, taking into account treatment duration, conforming treatment was 26\% (95\% CI 23–28\%) in hospitalised patients and 30\% (95\% CI 18–42\%) in patients admitted to the ICU.
 
+\end{multicols}
+
+\begin{table}[hbt!]
+\centering
+\scalebox{0.85}
+{
+\begin{tabular}{lcccc}
+\hline
+& Conforming treatment & Unconforming treatment & & \\
+Variables & ($n=45$) & ($n=37$) & Crude OR & $p$ value \\
+\hline
+Overall
+& 54.9\%
+& 45.1\%
+& & \\
+Influenza season (2013-14) 
+& 25 (55.6\%)
+& 12 (32.4\%) 
+& 2.60 (1.05-6.44)
+& 0.04 \\
+Hospita visits in last year ($<3$)
+& 28 (62.2\%)
+& 13 (35.1\%) 
+& 3.04 (1.23-7.52)
+& 0.02 \\ 
+Obesity (yes)
+& 13 (28.9\%)
+& 5 (13.5\%)
+& 2.60 (0.83-8.15)
+& 0.09 \\
+\hline
+\end{tabular}
+}
+\caption{\footnotesize Significative variables in patients admitted to the ICU according to conforming of antibiotic treatment}
+\label{tab:tabla_uci}
+\end{table}
+
+\begin{multicols}{2}
+
 \section*{\textcolor{blue}{Discussion}}
 The results of this study show that the conforming of empirical treatment according to the SEPAR guidelines in patients aged $\geq65$ years hospitalised due to CAP was greater than that found in European studies (38.8\%) \cite{rossio2015adherence} following the international recommendations of the IDSA/ATS. The international Community-Acquired Pneumonia Organization (CAPO) observational study, using data from hospitalised patients in Venezuela, found a correctness of 55\% \cite{levy2015cumplimiento}, although patients were younger (mean of 54 years).
 
 The comorbidities associated with conforming treatment in patients without ICU admission, after controlling for the effect of autonomous communities, were the absence of renal failure and cognitive dysfunction. This may suggest that, in patients with a history of COPD, physicians provide more conforming empirical antibiotic treatment when the most frequent microorganisms are suspected, and also choose antibiotic regimens that do not require dose adjustment in cases of impaired renal function due to age or associated comorbidities \cite{petrosillo2015treatment}. With respect to the lack of conforming treatment in patients with cognitive impairment, it may be assumed that the information obtained on comorbidities through relatives or caregivers is not sufficiently precise to establish the urgency of antibiotic treatment.
+
+\end{multicols}
+
+\begin{table}[hbt!]
+\centering
+\scalebox{0.85}
+{
+\begin{tabular}{lccc}
+\hline
+& Model 0reatment & Unconforming treatment & & \\
+Variables & ($n=45$) & ($n=37$) & Crude OR & $p$ value \\
+\hline
+Overall
+& 54.9\%
+& 45.1\%
+& & \\
+Influenza season (2013-14) 
+& 25 (55.6\%)
+& 12 (32.4\%) 
+& 2.60 (1.05-6.44)
+& 0.04 \\
+Hospita visits in last year ($<3$)
+& 28 (62.2\%)
+& 13 (35.1\%) 
+& 3.04 (1.23-7.52)
+& 0.02 \\ 
+Obesity (yes)
+& 13 (28.9\%)
+& 5 (13.5\%)
+& 2.60 (0.83-8.15)
+& 0.09 \\
+\hline
+\end{tabular}
+}
+\caption{\footnotesize Significative variables in patients admitted to the ICU according to conforming of antibiotic treatment}
+\label{tab:tabla_uci}
+\end{table}
+
+\begin{table}[hbt!]
+\centering
+\scalebox{0.85}
+{
+\begin{tabular}{llcc}
+\hline
+& {\multirow{2}{*}{Model 0}}
+& \multicolumn{2}{c}{Model1}  \\
+Fixed effects 
+& & OR and 95\% CI 
+& p                    \\
+COPD (yes)
+&  & 1.23 (0.99-1.54)
+& 0.060                \\
+Renal failure (no)
+& & 1.49 (1.15-1.95)
+& 0.002                \\
+Cognitive dysfunction (no)
+& & 1.71 (1.25-2.35)
+& $p<0.001$ \\
+Randon effects (autonomous community)
+& & & \\
+Variance (standard error)
+& 0.92 (0.9622) & 0.9253 (0.9619)  & \\
+Intraclass correlation coefficient
+& 21.96\%
+& & 
+\end{tabular}
+\end{table}
+
+\begin{multicols}{2}
 
 In patients admitted to the ICU, conforming treatment was not affected by the comorbidities present at the diagnosis of CAP, but was related to a more stable clinical state in the last year prior to ICU admission or the antibiotic policy in each centre, although there may have been an information bias in the data collection.
 
@@ -118,7 +340,7 @@ In conclusion, more than half the patients hospitalised due to CAP received conf
 
 \end{multicols}
 
-\bibliography{biblio_final.bib}
+\bibliography{bibliog_final.bib}
 
 \bibliographystyle{unsrt}
 
